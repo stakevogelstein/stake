@@ -222,17 +222,6 @@ void listFood(Food *menu, int count) {
     }
 }
 
-void printMenuHeader(int colorIndex) {
-  const char* colors[] = {"\e[0;93m", "\e[1;91m", "\e[1;93m", "\e[1;92m", "\e[1;96m", "\e[1;95m", "\e[1;94m"}; // Color codes
-  printf("%s", colors[colorIndex % MENU_COLOR_COUNT]); // Print color based on index
-
-  printf("\n///////////////////////////////////////////////////////////////////");
-  printf("\n  [WELCOME TO THE NHA LU HANH RESTAURANT MANAGEMENT PROGRAM]");
-  printf("\n///////////////////////////////////////////////////////////////////\n");
-
-  printf("\033[1;0m"); // Reset color to white
-}
-
 int main() {
     Food menu[100];
     int count = 0;
