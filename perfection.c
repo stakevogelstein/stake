@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define MENU_COLOR_COUNT 7
 
 typedef struct {
     char name[50];
@@ -204,7 +205,6 @@ void calculateSummary(Food *menu, int count) {
 }
 
 
-
 void listFood(Food *menu, int count) {
     int i;
     printf("%2s | %-50s| %s\n","Ord", "Food Name", "Food Price");  
@@ -222,22 +222,64 @@ void listFood(Food *menu, int count) {
     }
 }
 
+void printMenuHeader(int colorIndex) {
+  const char* colors[] = {"\e[0;93m", "\e[1;91m", "\e[1;93m", "\e[1;92m", "\e[1;96m", "\e[1;95m", "\e[1;94m"}; // Color codes
+  printf("%s", colors[colorIndex % MENU_COLOR_COUNT]); // Print color based on index
+
+  printf("\n///////////////////////////////////////////////////////////////////");
+  printf("\n  [WELCOME TO THE NHA LU HANH RESTAURANT MANAGEMENT PROGRAM]");
+  printf("\n///////////////////////////////////////////////////////////////////\n");
+
+  printf("\033[1;0m"); // Reset color to white
+}
+
 int main() {
     Food menu[100];
     int count = 0;
     loadMenu(menu, &count);
     int option;
     do {
-        printf("\n===================================================================");
-        printf("\n     WELCOME TO THE NHA LU HANH RESTAURANT MANAGEMENT PROGRAM");
-        printf("\n===================================================================");
-        printf("\n1. Add food\n");
-        printf("\n2. Edit food\n");
-        printf("\n3. Search specific food\n");
-        printf("\n4. List food\n");
-        printf("\n5. Delete specific food\n");
-        printf("\n6. Calculate how many foods there are\n");
-        printf("\n7. Exit\n");
+    	int j;
+        printf("\n================================================================");
+        printf("\n     ");
+        const char* colors[] = {"\e[1;93m"}; 
+        const int num_colors = sizeof(colors) / sizeof(colors[0]);
+        const char* welcome_text = "[WELCOME TO NHA LU HANH RESTAURANT MANAGEMENT PROGRAM]";
+        const int text_length = strlen(welcome_text);
+        for (j = 0; j < text_length; j++) {
+            printf("%s%c", colors[j % num_colors], welcome_text[j]);
+            fflush(stdout);
+            usleep(87000); // Adjust sleep time for speed of transition
+        }
+        printf("\033[0m"); // Reset color
+        printf("\033[1;0m");
+        printf("\n================================================================\n");
+        printf("\e[1;91m"); //red
+        printf("\n1. [ Add food ]");
+        printf("\033[1;0m"); //white
+        printf("\n------------------------------------------------------");
+        printf("\e[1;93m"); //yellow 
+        printf("\n2. [ Edit food ]");
+        printf("\033[1;0m"); //white
+        printf("\n----------------------------------------");
+        printf("\e[1;92m"); //green
+        printf("\n3. [ Search specific food ]");
+        printf("\033[1;0m"); //white
+        printf("\n--------------------------");
+        printf("\e[1;96m"); //cyan
+        printf("\n4. [ List food ]");
+        printf("\033[1;0m"); //white
+        printf("\n----------------------------------------");
+        printf("\e[1;95m"); //magenta
+        printf("\n5. [ Delete specific food ]");
+        printf("\033[1;0m"); //white
+        printf("\n------------------------------------------------------");
+        printf("\e[1;94m"); // blue
+        printf("\n6. [ Calculate how many foods there are ]");
+        printf("\033[1;0m"); //white
+        printf("\n===============================================================");
+        printf("\e[1;97m"); //white
+        printf("\n7. [Exit]\n");
         printf("\nChoose your option: ");
         if (scanf("%d", &option) != 1) {
         	int c;
