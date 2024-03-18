@@ -109,7 +109,7 @@ void searchFood(Food *menu, int count) {
             printf("Enter food name to search: ");
             fgets(searchName, sizeof(searchName), stdin);
             searchName[strcspn(searchName, "\n")] = 0; 
-            printf("\n| %-50s | %-10s |\n", "Food Name", "Food Price");
+            printf("\n| %-50s | %-10s |\n", "Food Name", "Mora");
             printf("|-%-50s-|-%-10s-|\n", "--------------------------------------------------", "----------");
             int i;
             for (i = 0; i < count; i++) {
@@ -123,7 +123,7 @@ void searchFood(Food *menu, int count) {
             float searchPrice;
             printf("Enter food price to search: ");
             scanf("%f", &searchPrice);
-            printf("\n| %-50s | %-10s |\n", "Food Name", "Food Price");
+            printf("\n| %-50s | %-10s |\n", "Food Name", "Mora");
             printf("|-%-50s-|-%-10s-|\n", "--------------------------------------------------", "----------");
             int i;
             for (i = 0; i < count; i++) {
@@ -207,7 +207,7 @@ void calculateSummary(Food *menu, int count) {
 
 void listFood(Food *menu, int count) {
     int i;
-    printf("%2s | %-50s| %s\n","Ord", "Food Name", "Food Price");  
+    printf("%2s | %-50s| %s\n","Ord", "Food Name", "Mora");  
     printf("---- --------------------------------------------------- ------------\n");  
     for (i = 0; i < count; i++) {
         printf("%2d  | %-50s| %.2f\n",i+1, menu[i].name, menu[i].price);
@@ -238,36 +238,36 @@ int main() {
         for (j = 0; j < text_length; j++) {
             printf("%s%c", colors[j % num_colors], welcome_text[j]);
             fflush(stdout);
-            usleep(87000); // Adjust sleep time for speed of transition
+            usleep(73000); // Adjust sleep time for speed of transition
         }
         printf("\033[0m"); // Reset color
         printf("\033[1;0m");
         printf("\n================================================================\n");
         printf("\e[1;91m"); //red
         printf("\n1. [ Add food ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n------------------------------------------------------");
         printf("\e[1;93m"); //yellow 
         printf("\n2. [ Edit food ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n----------------------------------------");
         printf("\e[1;92m"); //green
         printf("\n3. [ Search specific food ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n--------------------------");
         printf("\e[1;96m"); //cyan
         printf("\n4. [ List food ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n----------------------------------------");
         printf("\e[1;95m"); //magenta
         printf("\n5. [ Delete specific food ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n------------------------------------------------------");
         printf("\e[1;94m"); // blue
         printf("\n6. [ Calculate how many foods there are ]");
-        printf("\033[1;0m"); //white
+        printf("\033[1;0m"); 
         printf("\n===============================================================");
-        printf("\e[1;97m"); //white
+        printf("\e[1;97m"); 
         printf("\n7. [Exit]\n");
         printf("\nChoose your option: ");
         if (scanf("%d", &option) != 1) {
